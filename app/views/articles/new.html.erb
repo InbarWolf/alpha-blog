@@ -1,29 +1,9 @@
 
-<% if @article.errors.any? %>
-    <h2>See below errors</h2>
-    <% @article.errors.full_messages.each do |message| %>
-        <ul>
-            <li><%= message %></li>
-        </ul>
-    <%end%>
-<%end%>
+<%= render 'errors' %>
 
 <h1>Create an article</h1>
 
-<%= form_for @article do |f|  %>
-    <p>
-        <%= f.label :title %><br>
-        <%= f.text_field :title %>
-    </p>
-    <p>
-        <%= f.label :description %><br>
-        <%= f.text_area :description %>
-    </p>
-
-    <p>
-        <%= f.submit 'Create..' %>
-    </p>
-<% end %>
+<%= render 'form' %>
 
 <p>
     <%= link_to 'All Articels', articles_path %>
