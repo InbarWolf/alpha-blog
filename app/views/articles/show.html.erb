@@ -6,4 +6,5 @@
     <hr>
     <%= simple_format(@article.description) %>
     <%= render 'action_buttons', article: @article %>
+    <%= link_to 'All Articles', articles_path, class: "btn btn-success btn-xs" %>
 </div>
