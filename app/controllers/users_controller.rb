@@ -1,12 +1,16 @@
 class UsersController < ApplicationController
     
-    before_action :set_user, only: [:show]
+    before_action :set_user, only: [:show, :edit, :update]
 
     def new
         @user = User.new
     end
 
     def show
+
+    end
+
+    def edit
 
     end
 
@@ -18,6 +22,16 @@ class UsersController < ApplicationController
         else
             render 'new'
         end
+    end
+
+    def update
+        if @user.update(user_params)
+            flash[:success] = "USer info was updated!"
+            redirect_to user_path(@user)
+        else
+            render 'edit'
+        end
+
     end
 
     private 
