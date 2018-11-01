@@ -10,13 +10,15 @@
                 <div class="article_body">
                     <%= truncate(article.description, length: 50 ) %>
                 </div>
-                <div class="article_creation_details">
+                <div class="article_meta_details">
+                <small>
                     <% if article.user_id%>
-                        user: <%= article.user.username %>
+                        <%= link_to article.user.username %><br>
                     <%end%>
 
-                    created at:<%= article.created_at%>
-                    updated at:<%= article.updated_at%>
+                    created <%= time_ago_in_words(article.created_at) %> ago, 
+                    updated <%= time_ago_in_words(article.updated_at) %> ago
+                </small>
                 </div>
                 <%= render 'action_buttons', article: article %>
             </div>
