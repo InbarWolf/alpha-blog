@@ -1,5 +1,7 @@
 <h1>All Articles</h2>
 
+<%= will_paginate @articles %>
+
 <% @articles.each do |article| %>
     <div class="row">
         <div class="col-xs-8 col-xs-offset-2">
@@ -13,7 +15,8 @@
                 <div class="article_meta_details">
                 <small>
                     <% if article.user_id%>
-                        <%= link_to article.user.username %><br>
+                        <br><%= link_to gravatar_for(article.user), user_path(article.user) %><br>
+                        <%= link_to article.user.username, user_path(article.user) %><br>
                     <%end%>
 
                     created <%= time_ago_in_words(article.created_at) %> ago, 
@@ -25,6 +28,8 @@
         </div>
     </div>
 <% end %>
+
+<%= will_paginate @articles %>
     
 
 

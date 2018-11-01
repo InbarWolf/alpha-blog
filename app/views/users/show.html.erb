@@ -1,8 +1,19 @@
 
 
-<h2>User: <%= @user.username %></h2>
-<div class="well col-xs-8">
-    <h4 class="description">Email:</h4>
-    <hr>
-    <%= @user.email %>
+
+<div class="row">
+    <div class="col-md-10" align="center">
+        <h2 align="center"><%= @user.username %></h2>
+        <%= gravatar_for @user %>
+        <h4 align="center">Articles writter by <%="#{@user.username}"%>:</h4>
+
+        <%= will_paginate @articles %>
+        
+        <% @articles.each do |article| %>
+        <div class="well">
+            <%= link_to article.title , article_path(article) %>
+        </div>
+        <% end %>
+    </div>
 </div>
+

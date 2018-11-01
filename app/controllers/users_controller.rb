@@ -7,11 +7,18 @@ class UsersController < ApplicationController
     end
 
     def show
-
+        @articles = @user.articles.paginate(:page => params[:page], :per_page => 3 )
+        #  Array.new
+        # Article.all.each do |article|
+        #     @articles.push(article) if article.user == @user
     end
 
     def edit
 
+    end
+
+    def index
+        @users = User.paginate(:page => params[:page], :per_page => 5 )
     end
 
     def create
@@ -31,8 +38,9 @@ class UsersController < ApplicationController
         else
             render 'edit'
         end
-
     end
+
+    
 
     private 
 
