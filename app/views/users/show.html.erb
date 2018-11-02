@@ -8,12 +8,9 @@
         <h4 align="center">Articles writter by <%="#{@user.username}"%>:</h4>
 
         <%= will_paginate @articles %>
+
+        <%= render 'articles/articles_listing'%>
         
-        <% @articles.each do |article| %>
-        <div class="well">
-            <%= link_to article.title , article_path(article) %>
-        </div>
-        <% end %>
     </div>
 </div>
 

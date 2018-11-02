@@ -2,32 +2,7 @@
 
 <%= will_paginate @articles %>
 
-<% @articles.each do |article| %>
-    <div class="row">
-        <div class="col-xs-8 col-xs-offset-2">
-            <div class="well well-lg">
-                <div class="article_title">
-                    <%= link_to article.title, article_path(article) %>
-                </div>
-                <div class="article_body">
-                    <%= truncate(article.description, length: 50 ) %>
-                </div>
-                <div class="article_meta_details">
-                <small>
-                    <% if article.user_id%>
-                        <br><%= link_to gravatar_for(article.user), user_path(article.user) %><br>
-                        <%= link_to article.user.username, user_path(article.user) %><br>
-                    <%end%>
-
-                    created <%= time_ago_in_words(article.created_at) %> ago, 
-                    updated <%= time_ago_in_words(article.updated_at) %> ago
-                </small>
-                </div>
-                <%= render 'action_buttons', article: article %>
-            </div>
-        </div>
-    </div>
-<% end %>
+<%= render 'articles_listing'%>
 
 <%= will_paginate @articles %>
     
