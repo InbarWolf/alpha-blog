@@ -1,6 +1,9 @@
 class ArticlesController < ApplicationController
-
     before_action :set_article, only: [:show, :edit, :update, :destroy]
+
+    before_action :require_user, only: [:new]
+    before_action :require_same_user, only: [:edit, :destroy, :update]
+    
     def index
         @articles = Article.paginate(:page => params[:page], :per_page => 5 )
     end
@@ -52,5 +55,12 @@ class ArticlesController < ApplicationController
 
     def article_params
         params.require(:article).permit(:title, :description)
+    end
+
+    def require_same_user
+        if (logged_in? && @article.user && session[:user_id] != @article.user.id)
+            flash[:danger] = "Please log in"
+            redirect_to root_path
+        end
     end
 end

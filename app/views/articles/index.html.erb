@@ -1,10 +1,8 @@
-<h1>All Articles</h2>
+<h1 align="center">All Articles</h2>
 
-<%= will_paginate @articles %>
+<%= render 'articles_listing', articles: @articles%>
 
-<%= render 'articles_listing'%>
 
-<%= will_paginate @articles %>
     
 
 

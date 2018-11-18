@@ -1,4 +1,10 @@
-<% @articles.each do |article| %>
+<div class="row">
+    <div class="col-xs-8 col-xs-offset-2">
+        <%= will_paginate articles %>
+    </div>
+</div>
+
+<% articles.each do |article| %>
     <div class="row">
         <div class="col-xs-8 col-xs-offset-2">
             <div class="well well-lg">
@@ -10,7 +16,7 @@
                 </div>
                 <div class="article_meta_details">
                 <small>
-                    <% if article.user_id%>
+                    <% if article.user%>
                         <br><%= link_to gravatar_for(article.user), user_path(article.user) %><br>
                         <%= link_to article.user.username, user_path(article.user) %><br>
                     <%end%>
@@ -24,3 +30,9 @@
         </div>
     </div>
 <% end %>
+
+<div class="row">
+    <div class="col-xs-8 col-xs-offset-2">
+        <%= will_paginate articles %>
+    </div>
+</div>

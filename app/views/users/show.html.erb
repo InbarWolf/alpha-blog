@@ -9,7 +9,7 @@
 
         <%= will_paginate @articles %>
 
-        <%= render 'articles/articles_listing'%>
+        <%= render 'articles/articles_listing', articles: @articles%>
         
     </div>
 </div>
